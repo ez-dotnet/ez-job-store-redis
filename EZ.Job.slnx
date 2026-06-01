@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EZ.Job.Store.Redis/EZ.Job.Store.Redis.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/EZ.Job.Store.Redis.Sample/EZ.Job.Store.Redis.Sample.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/EZ.Job.Store.Redis.Tests/EZ.Job.Store.Redis.Tests.csproj" />
+  </Folder>
+</Solution>
