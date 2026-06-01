@@ -1,5 +1,6 @@
 using EZ.Job.Core;
 using EZJob.Store.Redis;
+using Xunit;
 
 namespace EZ.Job.Store.Redis.Tests;
 
