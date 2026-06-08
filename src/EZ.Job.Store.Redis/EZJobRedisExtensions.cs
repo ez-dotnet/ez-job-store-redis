@@ -17,6 +17,8 @@ public static class EZJobRedisExtensions
 
         builder.Services.AddSingleton<IJobStore>(_ =>
             new RedisJobStore(options.Configuration, options.KeyPrefix));
+        builder.Services.AddSingleton<IRecurringStore>(_ =>
+            new RedisRecurringStore(options.Configuration));
 
         return builder;
     }
