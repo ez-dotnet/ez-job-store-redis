@@ -73,7 +73,15 @@ public sealed class RedisJobStore : IJobStore
         var job = JsonSerializer.Deserialize<Job>(json, JsonOptions);
         if (job is null) return;
 
-        var updated = job with { Status = status, Error = error };
+        var now = DateTime.UtcNow;
+        var updated = job with
+        {
+            Status = status,
+            Error = error,
+            StartedAt = status == JobStatus.Processing ? (job.StartedAt ?? now) : job.StartedAt,
+            CompletedAt = status is JobStatus.Succeeded or JobStatus.Failed ? now : null
+        };
+
         var updatedJson = JsonSerializer.Serialize(updated, JsonOptions);
 
         await Db.StringSetAsync(Key(id), updatedJson).ConfigureAwait(false);
